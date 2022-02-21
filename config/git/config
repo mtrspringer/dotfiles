@@ -1,7 +1,45 @@
 [user]
 	name = mtrspringer
 	email = mtrspringer@users.noreply.github.com
+
+[github]
+	user = mtrspringer
+
+[core]
+	abbrev = 7
+
+[credential]
+	helper = osxkeychain
+
+[init]
+	defaultBranch = main
+
+[commit]
+	gpgsign = true
+
+[diff]
+	algorithm = histogram
+
+[pull]
+	rebase = true
+	ff = only
+
 [alias]
+	# shorthand aliases
+	amend = commit --amend --reuse-message=HEAD
+	br = branch
+	ci = commit
+	co = checkout
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
+	lg = log -p
+	ll = log --pretty=oneline --graph --abbrev-commit
+	lm = log --pretty=format:'* %s (%h)'
+	lt = log --all --graph --decorate --oneline
+	p = push
+	pf = push --force
+	st = status
+	# custom alias functions
 	all = "!f() { find ~/Code -name '.git' -type d | sed s,/.git,,; }; f"
 	all-click = "!f() { find ~/Code/click -name '.git' -type d | sed s,/.git,,; }; f"
 	clone-click = "!f() { curr_dir=$(pwd); cd ~/Code/click; git clone git@github.com:mtrspringer/$1.git; cd $1; git remote add root git@github.com:clicktherapeutics/$1.git; cd $curr_dir; }; f"
@@ -12,16 +50,4 @@
 	prrm = "!f() { local master_branch=${1:-master}; git pull --rebase root $master_branch; }; f"
 	sync = "!f() { local master_branch=${1:-master}; local current_branch=$(git branch --show-current); git checkout $master_branch && git pull root $master_branch && git push origin $master_branch --no-verify && git fetch root --tags && git checkout $current_branch; }; f"
 	ff = "!f() { local master_branch=${1:-master}; git sync $master_branch && git prrm $master_branch; }; f"
-	tree = log --all --graph --decorate --oneline
 	undo = "!f() { git reset --soft HEAD~${1:-1}; }; f"
-[commit]
-	gpgsign = true
-[core]
-	abbrev = 7
-[credential]
-	helper = osxkeychain
-[diff]
-	algorithm = histogram
-[pull]
-	rebase = true
-	ff = only
