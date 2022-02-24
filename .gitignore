@@ -1,3 +1,17 @@
 system/.custom
-config/aws/config
-config/aws/credentials
+
+# AWS
+stow/aws/config
+stow/aws/credentials
+
+# Kubernetes
+stow/kube/config
+
+# ZSH
+# TODO: git-crypt a separate secrets file so I can check in non-secret env vars
+stow/zsh/.zprofile
+
+# CT-L-M-016 Transfer Files
+# TODO: remove these files once they are incorporated into my dotfiles ecosystem
+transfer-ct-l-m-016/Work
+

@@ -1,0 +1,61 @@
+tap "aws/tap"
+tap "buo/cask-upgrade"
+tap "github/gh"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+# Official Amazon AWS command-line interface
+brew "awscli"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Tool for managing dock items
+brew "dockutil"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Enable transparent encryption/decryption of files in a git repo
+brew "git-crypt"
+# Small git utilities
+brew "git-extras"
+# Git extension for versioning large files
+brew "git-lfs"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
+# Keep your Mac's application settings in sync
+brew "mackup"
+# Mac App Store command-line interface
+brew "mas"
+# Node version management
+brew "n"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
+# Ruby version manager
+brew "rbenv"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Internet file retriever
+brew "wget"
+# Process YAML documents from the CLI
+brew "yq"
+# UNIX shell (command interpreter)
+brew "zsh"
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
+# App to build and share containerized applications and microservices
+cask "docker"
+# Web browser
+cask "google-chrome"
+# Collaboration platform for API development
+cask "postman"
+# Music streaming service
+cask "spotify"
+# Open-source code editor
+cask "visual-studio-code"
+mas "Magnet", id: 441258766

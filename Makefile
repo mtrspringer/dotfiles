@@ -4,8 +4,8 @@ OS := $(shell bin/is-supported bin/is-macos macos linux)
 PATH := $(DOTFILES_DIR)/bin:$(PATH)
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local)
 export XDG_CONFIG_HOME = $(HOME)/.config
-export STOW_DIR = $(DOTFILES_DIR)
-export ACCEPT_EULA=Y
+export STOW_DIR = $(DOTFILES_DIR)/stow
+export ACCEPT_EULA = Y
 
 .PHONY: test
 
@@ -35,6 +35,26 @@ ifndef GITHUB_ACTION
 endif
 
 packages: brew-packages cask-apps node-packages rust-packages
+
+stow-link: stow-$(OS)
+	for FILE in $$(\ls -A $(STOW_DIR)/zsh); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
+		mv -v $(HOME)/$$FILE{,.bak}; fi; done
+	stow --dotfiles -t $(HOME) zsh
+	stow --dotfiles -t $(HOME)/.aws aws
+	stow --dotfiles -t $(HOME)/.docker docker
+	stow --dotfiles -t $(HOME) git
+	stow --dotfiles -t $(HOME)/.gnupg gpg
+	stow --dotfiles -t $(HOME)/.kube kube
+
+stow-unlink: stow-$(OS)
+	stow --delete --dotfiles -t $(HOME) zsh
+	stow --delete --dotfiles -t $(HOME)/.aws aws
+	stow --delete --dotfiles -t $(HOME)/.docker docker
+	stow --delete --dotfiles -t $(HOME) git
+	stow --delete --dotfiles -t $(HOME)/.gnupg gpg
+	stow --delete --dotfiles -t $(HOME)/.kube kube
+	for FILE in $$(\ls -A $(STOW_DIR)/zsh); do if [ -f $(HOME)/$$FILE.bak ]; then \
+		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
 link: stow-$(OS)
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
