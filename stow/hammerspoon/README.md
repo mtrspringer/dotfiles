@@ -12,13 +12,13 @@ The hyper key is defined as `⌘ + ⌥ + ⌃` (control + option + command). Pres
 
 | Key | App                |
 | --- | ------------------ |
+| 1   | 1Password          |
 | C   | Slack (Chat)       |
 | D   | Dash               |
 | F   | Finder             |
 | G   | Google Chrome      |
 | K   | Keeper             |
 | M   | Spotify (Music)    |
-| O   | 1Password (One)    |
 | P   | Postman            |
 | S   | System Preferences |
 | S   | Spotify            |
