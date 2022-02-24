@@ -14,10 +14,10 @@
         "revision": "155ba9c303272db03e872c587a7f03d5969adfd4"
       },
       "buo/cask-upgrade": {
-        "revision": "4054f61f1d756bed6e3cbc94205c4b45098825ac"
+        "revision": "4b94bdbf56fb90c5af38e661d40591062aa6b38c"
       },
       "homebrew/cask": {
-        "revision": "1af70fad252e55966f2deffe52832cb36dc6cb55"
+        "revision": "48a1679821135d48b3fe9aa4e3b8944b5778172e"
       }
     },
     "brew": {
@@ -871,6 +871,18 @@
         "version": "1.64.2",
         "options": {
           "full_name": "visual-studio-code"
+        }
+      },
+      "dash": {
+        "version": "6.2.2,992",
+        "options": {
+          "full_name": "dash"
+        }
+      },
+      "hammerspoon": {
+        "version": "0.9.93",
+        "options": {
+          "full_name": "hammerspoon"
         }
       }
     },

@@ -48,10 +48,14 @@ brew "yq"
 brew "zsh"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# API documentation browser and code snippet manager
+cask "dash"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Web browser
 cask "google-chrome"
+# Desktop automation application
+cask "hammerspoon"
 # Collaboration platform for API development
 cask "postman"
 # Music streaming service
