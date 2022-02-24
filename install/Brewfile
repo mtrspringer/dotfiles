@@ -36,6 +36,8 @@ brew "mas"
 brew "n"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Install various Ruby versions and implementations
+brew "ruby-build"
 # Ruby version manager
 brew "rbenv"
 # Organize software neatly under a single directory tree (e.g. /usr/local)

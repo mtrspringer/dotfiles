@@ -16,7 +16,7 @@ macos: sudo core-macos packages link
 
 linux: core-linux link
 
-core-macos: brew bash git npm ruby rust
+core-macos: brew bash git node ruby rust
 
 core-linux:
 	apt-get update
@@ -37,6 +37,7 @@ endif
 
 packages: brew-packages cask-apps node-packages rust-packages
 
+# TODO: ensure target directories exist before running stow
 stow-link: stow-$(OS)
 	for FILE in $$(\ls -A $(STOW_DIR)/zsh); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
@@ -45,6 +46,7 @@ stow-link: stow-$(OS)
 	stow --dotfiles -t $(HOME)/.docker docker
 	stow --dotfiles -t $(HOME) git
 	stow --dotfiles -t $(HOME)/.gnupg gpg
+	stow --dotfiles -t $(HOME)/.hammerspoon hammerspoon
 	stow --dotfiles -t $(HOME)/.kube kube
 
 stow-unlink: stow-$(OS)
@@ -53,6 +55,7 @@ stow-unlink: stow-$(OS)
 	stow --delete --dotfiles -t $(HOME)/.docker docker
 	stow --delete --dotfiles -t $(HOME) git
 	stow --delete --dotfiles -t $(HOME)/.gnupg gpg
+	stow --delete --dotfiles -t $(HOME)/.hammerspoon hammerspoon
 	stow --delete --dotfiles -t $(HOME)/.kube kube
 	for FILE in $$(\ls -A $(STOW_DIR)/zsh); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
@@ -93,7 +96,7 @@ endif
 git: brew
 	brew install git git-extras
 
-npm: brew-packages
+node: brew-packages
 	n $(N_NODE_VERSION)
 
 ruby: brew
@@ -111,7 +114,7 @@ cask-apps: brew
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
-node-packages: npm
+node-packages: node
 	npm install -g $(shell cat install/npmfile)
 
 rust-packages: CARGO=$(HOMEBREW_PREFIX)/bin/cargo
