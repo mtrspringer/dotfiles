@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "aws/tap": {
-        "revision": "0b5757bf6b5ae1edddc2cbd9a5a46e33969cc84f"
+        "revision": "8efd98adee25539f07838c36acc92d40a619005b"
       },
       "github/gh": {
         "revision": "209f59cda890de69b74c224982591642c21323d3"
@@ -11,10 +11,10 @@
         "revision": "3b7cba3e1c32e5908f8f688033bd614195c020d7"
       },
       "homebrew/core": {
-        "revision": "155ba9c303272db03e872c587a7f03d5969adfd4"
+        "revision": "d8cf87edcb7c33bc83398328287e2e823d832c62"
       },
       "buo/cask-upgrade": {
-        "revision": "4b94bdbf56fb90c5af38e661d40591062aa6b38c"
+        "revision": "688515b43ebc8a04932c9951bb4dc3bc26cd74b7"
       },
       "homebrew/cask": {
         "revision": "48a1679821135d48b3fe9aa4e3b8944b5778172e"
@@ -937,7 +937,7 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.3.16",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "155ba9c303272db03e872c587a7f03d5969adfd4",
+        "Homebrew/homebrew-core": "d8cf87edcb7c33bc83398328287e2e823d832c62",
         "CLT": "12.5.0.22.9",
         "Xcode": "13.2.1",
         "macOS": "11.6.4"

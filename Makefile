@@ -3,6 +3,7 @@ DOTFILES_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 OS := $(shell bin/is-supported bin/is-macos macos linux)
 PATH := $(DOTFILES_DIR)/bin:$(PATH)
 HOMEBREW_PREFIX := $(shell bin/is-supported bin/is-arm64 /opt/homebrew /usr/local)
+N_NODE_VERSION := lts
 export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)/stow
 export ACCEPT_EULA = Y
@@ -93,7 +94,7 @@ git: brew
 	brew install git git-extras
 
 npm: brew-packages
-	fnm install --lts
+	n $(N_NODE_VERSION)
 
 ruby: brew
 	brew install ruby
@@ -111,7 +112,7 @@ cask-apps: brew
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 node-packages: npm
-	eval $$(fnm env); npm install -g $(shell cat install/npmfile)
+	npm install -g $(shell cat install/npmfile)
 
 rust-packages: CARGO=$(HOMEBREW_PREFIX)/bin/cargo
 rust-packages: rust
