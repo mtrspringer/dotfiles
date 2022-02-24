@@ -22,6 +22,8 @@ brew "git-extras"
 brew "git-lfs"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Kubernetes package manager
+brew "helm"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Kubernetes command-line interface
