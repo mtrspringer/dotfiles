@@ -124,3 +124,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# >>> rbenv initialize >>>
+eval "$(rbenv init - zsh)"
+# <<< rbenv initialize <<<

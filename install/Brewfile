@@ -8,6 +8,8 @@ tap "homebrew/core"
 brew "awscli"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Docker Credential Helper for Amazon ECR
+brew "docker-credential-helper-ecr", link: false
 # Tool for managing dock items
 brew "dockutil"
 # GitHub command-line tool

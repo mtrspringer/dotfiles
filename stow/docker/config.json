@@ -1,5 +1,8 @@
 {
 	"auths": {
+		"062790668828.dkr.ecr.us-east-1.amazonaws.com": {},
+		"418480071957.dkr.ecr.us-east-1.amazonaws.com": {},
+		"785553665724.dkr.ecr.us-east-1.amazonaws.com": {},
 		"https://index.docker.io/v1/": {}
 	},
 	"credsStore": "desktop",
