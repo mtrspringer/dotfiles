@@ -74,6 +74,8 @@ plugins=(
   1password
   aws
   brew-bundle
+  click-tx
+  docker-compose
   git
   git-extras
   gh
