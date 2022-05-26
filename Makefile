@@ -38,21 +38,21 @@ endif
 packages: brew-packages cask-apps node-packages rust-packages
 
 # TODO: ensure target directories exist before running stow
+# TODO: figure out how to support docker config: stow --dotfiles -t $(HOME)/.docker docker
 stow-link: stow-$(OS)
 	for FILE in $$(\ls -A $(STOW_DIR)/zsh); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	stow --dotfiles -t $(HOME) zsh
 	stow --dotfiles -t $(HOME)/.aws aws
-	stow --dotfiles -t $(HOME)/.docker docker
 	stow --dotfiles -t $(HOME) git
 	stow --dotfiles -t $(HOME)/.gnupg gpg
 	stow --dotfiles -t $(HOME)/.hammerspoon hammerspoon
 	stow --dotfiles -t $(HOME)/.kube kube
 
+# TODO: figure out how to support docker config: stow --delete --dotfiles -t $(HOME)/.docker docker
 stow-unlink: stow-$(OS)
 	stow --delete --dotfiles -t $(HOME) zsh
 	stow --delete --dotfiles -t $(HOME)/.aws aws
-	stow --delete --dotfiles -t $(HOME)/.docker docker
 	stow --delete --dotfiles -t $(HOME) git
 	stow --delete --dotfiles -t $(HOME)/.gnupg gpg
 	stow --delete --dotfiles -t $(HOME)/.hammerspoon hammerspoon

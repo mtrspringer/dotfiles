@@ -1,4 +1,5 @@
 tap "aws/tap"
+tap "bufbuild/buf"
 tap "buo/cask-upgrade"
 tap "github/gh"
 tap "homebrew/bundle"
@@ -24,6 +25,8 @@ brew "git-extras"
 brew "git-lfs"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
 # Kubernetes package manager
 brew "helm"
 # Lightweight and flexible command-line JSON processor
@@ -52,6 +55,8 @@ brew "wget"
 brew "yq"
 # UNIX shell (command interpreter)
 brew "zsh"
+# A new way of working with Protocol Buffers.
+brew "bufbuild/buf/buf"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # API documentation browser and code snippet manager
