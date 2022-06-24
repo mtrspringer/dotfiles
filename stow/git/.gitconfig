@@ -50,6 +50,7 @@
 	exec-all = "!f() { find ~/Code -name '.git' -type d | sed s,/.git,, | xargs -P10 -I{} git -C {} $1; }; f"
 	exec-all-click = "!f() { find ~/Code/click -name '.git' -type d | sed s,/.git,, | xargs -P10 -I{} git -C {} $1; }; f"
 	prrm = "!f() { local master_branch=${1:-master}; git pull --rebase root $master_branch; }; f"
+	rel-click = "!f() { local release_branch=rel-$1; local remote_name=${2:-root}; git checkout -b $release_branch && git push $remote_name $release_branch; }; f"
 	synk = "!f() { local master_branch=${1:-master}; local current_branch=$(git branch --show-current); git checkout $master_branch && git pull root $master_branch && git push origin $master_branch --no-verify && git fetch root --tags && git checkout $current_branch; }; f"
 	ff = "!f() { local master_branch=${1:-master}; git synk $master_branch && git prrm $master_branch; }; f"
 	undo = "!f() { git reset --soft HEAD~${1:-1}; }; f"

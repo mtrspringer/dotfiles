@@ -1,0 +1,160 @@
+#!/usr/bin/python3
+import sys
+import os
+import subprocess
+import argparse
+import json
+from pathlib import Path
+
+# Constants
+DEVELOPMENT = 'development'
+BETA = 'beta'
+PRODUCTION = 'production'
+
+K8S_MAINFESTS_ROOT = Path.home().joinpath('Code', 'click', 'k8s-manifests')
+
+# Map to Overlay Folders
+CLUSTERS_BY_STAGE = {
+    DEVELOPMENT: ['kdv2a', 'kdv5a', 'kdv6a', 'kdv7a', 'kdv8a', 'kdv9a', 'kdv10a'],
+    BETA: ['kqa4a', 'kqa5a', 'kqa5c', 'kqa6a', 'kqa7a', 'kqa7c', 'kqa8a', 'kqa9a'],
+    PRODUCTION: ['kpd2a', 'kpd6a', 'kpd7a', 'kpd8a', 'kpd9a', 'kpd10a'],
+}
+
+SERVICES_WITH_MIGRATIONS = [
+    'account',
+    'auth',
+    'email',
+    'sms',
+    'sponsor',
+]
+
+
+# Arg parsing
+def getargs():
+    parser = argparse.ArgumentParser(description='Migrate route53 record sets between two Hosted Zones with the same domain')
+    parser.add_argument('--stage', '-s', dest='stage', choices=[DEVELOPMENT, BETA, PRODUCTION],
+                        type=str, default=DEVELOPMENT)
+    parser.add_argument('--dryrun', '-d', dest='is_dryrun', action='store_true',
+                        help='Performs a dry-run and just prints the api calls the script would make if it was live.')
+    parser.add_argument('--ingress', '-I', dest='deploy_ingress', action='store_true',
+                        help='If true, deploy ingress changes')
+    parser.add_argument('--services', '-S', dest='services', action='extend', nargs='+', default=[],
+                        help='The list of services to deploy')
+    parser.add_argument('--clusters', '-C', dest='clusters', action='extend', nargs='+', default=[],
+                        help='Specify a subset of stage clusters to deploy')
+    args = parser.parse_args()
+    args.kubectl_dryrun = 'client' if args.is_dryrun else 'none'
+    return args
+
+
+# Kubectl helpers
+def kubectl_get_context():
+    command_str = 'kubectl config current-context'
+    try:
+        output = subprocess.run(command_str.split(), env=os.environ, check=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8')
+        current_context = output.stdout.strip()
+        print('\nCurrent kube context: {}\n'.format(current_context))
+        return current_context
+    except subprocess.CalledProcessError as e:
+        print(e)
+        print(e.output)
+        exit(e.returncode)
+
+def kubectl_set_context(cluster):
+    command_str = 'kubectl config use-context {}'.format(cluster)
+    try:
+        output = subprocess.run(command_str.split(), env=os.environ, check=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8')
+        kubectl_get_context()
+    except subprocess.CalledProcessError as e:
+        print(e)
+        print(e.output)
+        exit(e.returncode)
+
+def kubectl_delete_migration_job(args, cluster, service):
+    command_str = 'kubectl delete job --dry-run={dryrun} {service}-svc-migration'.format(dryrun=args.kubectl_dryrun, service=service)
+    try:
+        print('Deleting {service} migration job in EKS cluster: {cluster} (dryrun: {dryrun})\n'.format(service=service, cluster=cluster, dryrun=args.is_dryrun))
+        print(command_str)
+        output = subprocess.run(command_str.split(), env=os.environ, check=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8')
+    except subprocess.CalledProcessError as e:
+        print(e)
+        print(e.output)
+        exit(e.returncode)
+
+def kubectl_apply_overlay(args, cluster, service):
+    command_str = 'kubectl apply --dry-run={dryrun} -k ./overlays/{cluster}'.format(dryrun=args.kubectl_dryrun, cluster=cluster)
+    try:
+        print('Applying {service} overlay for EKS cluster: {cluster} (dryrun: {dryrun})\n'.format(service=service, cluster=cluster, dryrun=args.is_dryrun))
+        print(command_str)
+        output = subprocess.run(command_str.split(), env=os.environ, check=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8')
+    except subprocess.CalledProcessError as e:
+        print(e)
+        print(e.output)
+        exit(e.returncode)
+
+def get_clusters(args):
+    all_clusters_for_stage = CLUSTERS_BY_STAGE[args.stage]
+    clusters = all_clusters_for_stage
+    if len(args.clusters) > 0:
+        cluster_subset = [ cluster for cluster in args.clusters if cluster in all_clusters_for_stage ]
+        if len(cluster_subset) == 0:
+            raise argparse.ArgumentError(None, 'Provided clusters: {arg_clusters} returned an empty subset of stage clusters: {stage_clusters}. Please enter valid cluster values or update the master list of per-stage clusters.'.format(arg_clusters=args.clusters, stage_clusters=all_clusters_for_stage))
+        else:
+            clusters = cluster_subset
+    print('Deploying to the following k8s clusters: {clusters}'.format(clusters=clusters))
+    return clusters
+
+
+# Deploy helpers
+def deploy(args):
+    clusters = get_clusters(args)
+    for cluster in clusters:
+        deploy_cluster(args, cluster)
+    return
+
+def deploy_cluster(args, cluster):
+    kubectl_set_context(cluster)
+    if args.deploy_ingress:
+        deploy_cluster_ingress(args, cluster)
+    for service in args.services:
+        deploy_cluster_service(args, cluster, service)
+    return
+
+def deploy_cluster_service(args, cluster, service):
+    os.chdir(os.path.join(K8S_MAINFESTS_ROOT, service))
+    print(os.path.abspath(os.curdir))
+    if service in SERVICES_WITH_MIGRATIONS:
+        kubectl_delete_migration_job(args, cluster, service)
+    kubectl_apply_overlay(args, cluster, service)
+    return
+
+def deploy_cluster_ingress(args, cluster):
+    folder='ingress'
+    os.chdir(os.path.join(K8S_MAINFESTS_ROOT, folder))
+    print(os.path.abspath(os.curdir))
+    kubectl_apply_overlay(args, cluster, folder)
+    return
+
+
+# Main
+def main():
+    args = getargs()
+    print('\nDEPLOYMENT:\n')
+    print('Stage: {stage}'.format(stage=args.stage))
+    print('Clusters: {clusters}'.format(clusters=get_clusters(args)))
+    print('Services: {services}'.format(services=args.services))
+    print('Dryrun: {dryrun}\n'.format(dryrun=args.is_dryrun))
+
+    initial_kube_context = kubectl_get_context()
+
+    deploy(args)
+
+    print('Reverting to initial kubectl context: {context}'.format(context=initial_kube_context))
+    kubectl_set_context(initial_kube_context)
+
+    exit(0)
+
+
+if __name__ == '__main__':
+    main()
+
