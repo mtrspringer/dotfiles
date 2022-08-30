@@ -26,6 +26,7 @@ alias dkr-stop-all='dkr stop $(dkr ps -aq)'
 alias dkr-rm-all='dkr rm $(dkr ps -aq)'
 alias dkr-rmi-all='dkr rmi $(dkr images -aq)'
 alias dkr-login='aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 418480071957.dkr.ecr.us-east-1.amazonaws.com'
+alias dkr-login-155-dev='aws --profile ct155-dev ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 343335910610.dkr.ecr.us-east-1.amazonaws.com'
 alias dkr-login-155-prod='aws --profile ct155-prod ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 343335910610.dkr.ecr.us-east-1.amazonaws.com'
 alias dkr-login-152-dev='aws --profile ct152-dev ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 358341525847.dkr.ecr.us-east-1.amazonaws.com'
 alias dkr-login-sbx='aws --profile sbx ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 249738588392.dkr.ecr.us-east-1.amazonaws.com'
@@ -58,7 +59,12 @@ aws-ec2-report() {
 aws-mfa-session-set() {
   mfa_code=$1
 
-  mfa_session_creds=$(aws sts get-session-token --serial-number arn:aws:iam::418480071957:mfa/matthew_limited --token-code $mfa_code)
+  if [ -z "$mfa_code" ]; then
+    echo 'Error: please provide an MFA code from your authenticator app'
+    return 1
+  fi
+
+  mfa_session_creds=$(aws --profile ltd sts get-session-token --serial-number arn:aws:iam::418480071957:mfa/matthew_limited --token-code $mfa_code)
 
   export AWS_ACCESS_KEY_ID=$(echo $mfa_session_creds | jq -r .Credentials.AccessKeyId)
   export AWS_SECRET_ACCESS_KEY=$(echo $mfa_session_creds | jq -r .Credentials.SecretAccessKey)
@@ -66,6 +72,8 @@ aws-mfa-session-set() {
 
   echo "AWS MFA Session Identity:"
   aws sts get-caller-identity
+
+  return 0
 }
 
 aws-mfa-session-unset() {

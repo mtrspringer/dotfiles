@@ -42,6 +42,8 @@ def getargs():
                         help='The list of services to deploy')
     parser.add_argument('--clusters', '-C', dest='clusters', action='extend', nargs='+', default=[],
                         help='Specify a subset of stage clusters to deploy')
+    parser.add_argument('--restart', '-R', dest='restart', action='store_true',
+                        help='If true, restart all deployments')
     args = parser.parse_args()
     args.kubectl_dryrun = 'client' if args.is_dryrun else 'none'
     return args
@@ -92,6 +94,17 @@ def kubectl_apply_overlay(args, cluster, service):
         print(e.output)
         exit(e.returncode)
 
+def kubectl_restart(args, cluster):
+    command_str = 'kubectl rollout restart deploy'
+    try:
+        print('Restarting all deployments for EKS cluster: {cluster} (dryrun: {dryrun})\n'.format(cluster=cluster, dryrun=args.is_dryrun))
+        print(command_str)
+        output = subprocess.run(command_str.split(), env=os.environ, check=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8')
+    except subprocess.CalledProcessError as e:
+        print(e)
+        print(e.output)
+        exit(e.returncode)
+
 def get_clusters(args):
     all_clusters_for_stage = CLUSTERS_BY_STAGE[args.stage]
     clusters = all_clusters_for_stage
@@ -114,6 +127,9 @@ def deploy(args):
 
 def deploy_cluster(args, cluster):
     kubectl_set_context(cluster)
+    if args.restart:
+        kubectl_restart(args, cluster)
+        return
     if args.deploy_ingress:
         deploy_cluster_ingress(args, cluster)
     for service in args.services:
@@ -157,4 +173,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
