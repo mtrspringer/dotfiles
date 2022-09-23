@@ -69,6 +69,8 @@ cask "docker"
 cask "google-chrome"
 # Desktop automation application
 cask "hammerspoon"
+# VPN client for secure internet access and private browsing
+cask "nordvpn"
 # Collaboration platform for API development
 cask "postman"
 # Music streaming service
