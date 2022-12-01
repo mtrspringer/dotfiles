@@ -15,9 +15,9 @@ K8S_MAINFESTS_ROOT = Path.home().joinpath('Code', 'click', 'k8s-manifests')
 
 # Map to Overlay Folders
 CLUSTERS_BY_STAGE = {
-    DEVELOPMENT: ['kdv2a', 'kdv5a', 'kdv6a', 'kdv7a', 'kdv8a', 'kdv9a', 'kdv10a'],
-    BETA: ['kqa4a', 'kqa5a', 'kqa5c', 'kqa6a', 'kqa7a', 'kqa7c', 'kqa8a', 'kqa9a'],
-    PRODUCTION: ['kpd2a', 'kpd6a', 'kpd7a', 'kpd8a', 'kpd9a', 'kpd10a'],
+    DEVELOPMENT: ['kdv2a', 'kdv5a', 'kdv6a', 'kdv7a', 'kdv8a', 'kdv9a', 'kdv10a', 'kdv11a'],
+    BETA: ['kqa4a', 'kqa5a', 'kqa5c', 'kqa6a', 'kqa7a', 'kqa7c', 'kqa8a', 'kqa9a', 'kqa11a'],
+    PRODUCTION: ['kpd2a', 'kpd6a', 'kpd7a', 'kpd8a', 'kpd9a', 'kpd10a', 'kpd11a'],
 }
 
 SERVICES_WITH_MIGRATIONS = [
@@ -31,7 +31,7 @@ SERVICES_WITH_MIGRATIONS = [
 
 # Arg parsing
 def getargs():
-    parser = argparse.ArgumentParser(description='Migrate route53 record sets between two Hosted Zones with the same domain')
+    parser = argparse.ArgumentParser(description='Apply kubernetes manifests to specified EKS clusters')
     parser.add_argument('--stage', '-s', dest='stage', choices=[DEVELOPMENT, BETA, PRODUCTION],
                         type=str, default=DEVELOPMENT)
     parser.add_argument('--dryrun', '-d', dest='is_dryrun', action='store_true',

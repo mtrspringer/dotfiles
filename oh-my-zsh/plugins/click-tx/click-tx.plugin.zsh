@@ -39,7 +39,9 @@ alias dkrc-sys='dkrc -f docker-compose-sys.yml'
 alias kctl="kubectl"
 alias kctx="kubectl config use-context"
 alias kctx-curr="kubectl config current-context"
+alias kust="kustomize"
 alias pod-images="kubectl get pods --all-namespaces -o jsonpath="{..image}" | tr -s '[[:space:]]' '\n' | sort | uniq -c"
+alias argo-pf="kubectl port-forward svc/argocd-server -n argo 8080:443"
 
 ## NPM
 
@@ -53,6 +55,12 @@ alias npm-rm-nm='find . -name "node_modules" -exec rm -rf "{}" +'
 aws-ec2-report() {
   aws ec2 describe-instances \
     --query 'Reservations[*].Instances[*].{Account:NetworkInterfaces[0].OwnerId,VPC:VpcId,Subnet:SubnetId,Name:Tags[?Key==`Name`]|[0].Value,Stage:Tags[?Key==`deployment-stage`]|[0].Value,InstanceId:InstanceId,Type:InstanceType,AZ:Placement.AvailabilityZone,PublicIP:PublicIpAddress,PrivateIP:PrivateIpAddress}' \
+    --output table
+}
+
+aws-cfn-report() {
+  aws cloudformation describe-stacks \
+    --query 'Stacks[*].{Name:StackName,Description:Description}' \
     --output table
 }
 

@@ -19,7 +19,7 @@ alias bbh="brew bundle --help"
 
 # Brew alias that automatically updates Brewfile after `brew install|uninstall`: https://github.com/Homebrew/brew/issues/3933
 bru() {
-  local dump_commands=('install' 'uninstall') # Include all commands that should do a brew dump
+  local dump_commands=('install' 'uninstall' 'update' 'upgrade' 'cleanup' 'autoremove') # Include all commands that should do a brew dump
   local main_command="${1}"
 
   brew ${@}
