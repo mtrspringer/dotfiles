@@ -29,14 +29,18 @@ brew "git-lfs"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Image manipulation
+brew "netpbm"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # Kubernetes package manager
 brew "helm"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Kubernetes command-line interface
-brew "kubernetes-cli"
+brew "kubernetes-cli", link: false
 # Template-free customization of Kubernetes YAML manifests
 brew "kustomize"
 # Keep your Mac's application settings in sync
@@ -57,7 +61,7 @@ brew "stow"
 brew "tree"
 # Internet file retriever
 brew "wget"
-# Process YAML documents from the CLI
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
 # UNIX shell (command interpreter)
 brew "zsh"
@@ -84,3 +88,4 @@ cask "spotify"
 # Open-source code editor
 cask "visual-studio-code"
 mas "Magnet", id: 441258766
+mas "Xcode", id: 497799835
