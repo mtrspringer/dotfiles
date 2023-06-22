@@ -87,6 +87,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Disable AWS prompt info
+export SHOW_AWS_PROMPT=false
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
