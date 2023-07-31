@@ -27,7 +27,7 @@ alias dkr-rm-all='dkr rm $(dkr ps -aq)'
 alias dkr-rmi-all='dkr rmi $(dkr images -aq)'
 alias dkr-login='aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 418480071957.dkr.ecr.us-east-1.amazonaws.com'
 alias dkr-login-cicd-np='aws --profile cicd-np-org ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 561618220790.dkr.ecr.us-east-1.amazonaws.com'
-alias dkr-login-155-np-us='aws --profile ct155-np-us-org ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 343335910610.dkr.ecr.us-east-1.amazonaws.com'
+alias dkr-login-155-np-us='aws --profile ct155-np-us-org ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 616418525936.dkr.ecr.us-east-1.amazonaws.com'
 alias dkr-login-155-pd-us='aws --profile ct155-pd-us ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 343335910610.dkr.ecr.us-east-1.amazonaws.com'
 alias dkr-login-152-dev-us='aws --profile ct152-dev-us ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 358341525847.dkr.ecr.us-east-1.amazonaws.com'
 alias dkr-login-sbx='aws --profile sbx ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 249738588392.dkr.ecr.us-east-1.amazonaws.com'
@@ -43,6 +43,8 @@ alias kctx-curr="kubectl config current-context"
 alias kust="kustomize"
 alias pod-images="kubectl get pods --all-namespaces -o jsonpath="{..image}" | tr -s '[[:space:]]' '\n' | sort | uniq -c"
 alias argo-pf="kubectl port-forward svc/argocd-server -n argo 8080:443"
+alias argo-li-np="argocd login argocd.clicktherapeuticsdev.com --grpc-web-root-path / --sso"
+alias argo-li-pd="argocd login argocd.clicktherapeutics.com --grpc-web-root-path / --sso"
 
 ## NPM
 
