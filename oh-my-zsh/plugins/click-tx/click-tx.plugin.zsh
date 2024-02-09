@@ -30,7 +30,7 @@ alias dkr-login-cicd-np='aws --profile cicd-np-org ecr get-login-password --regi
 alias dkr-login-155-np-us='aws --profile ct155-np-us-org ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 616418525936.dkr.ecr.us-east-1.amazonaws.com'
 alias dkr-login-155-pd-us='aws --profile ct155-pd-us ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 343335910610.dkr.ecr.us-east-1.amazonaws.com'
 alias dkr-login-152-dev-us='aws --profile ct152-dev-us ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 358341525847.dkr.ecr.us-east-1.amazonaws.com'
-alias dkr-login-sbx='aws --profile sbx ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 249738588392.dkr.ecr.us-east-1.amazonaws.com'
+alias dkr-login-sbx='aws --profile sbx-org ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 249738588392.dkr.ecr.us-east-1.amazonaws.com'
 alias dkrc='docker-compose'
 alias dkrc-ci='dkrc -f docker-compose-ci.yml'
 alias dkrc-sys='dkrc -f docker-compose-sys.yml'
@@ -45,6 +45,9 @@ alias pod-images="kubectl get pods --all-namespaces -o jsonpath="{..image}" | tr
 alias argo-pf="kubectl port-forward svc/argocd-server -n argo 8080:443"
 alias argo-li-np="argocd login argocd.clicktherapeuticsdev.com --grpc-web-root-path / --sso"
 alias argo-li-pd="argocd login argocd.clicktherapeutics.com --grpc-web-root-path / --sso"
+
+## Utilities
+alias my-ip="echo $(curl --silent ifconfig.me)"
 
 ## NPM
 
