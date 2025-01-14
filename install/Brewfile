@@ -3,7 +3,6 @@ tap "bufbuild/buf"
 tap "buo/cask-upgrade"
 tap "github/gh"
 tap "homebrew/bundle"
-tap "lacework/tap"
 # Run your GitHub Actions locally
 brew "act"
 # GitOps Continuous Delivery for Kubernetes
@@ -12,6 +11,8 @@ brew "argocd"
 brew "awscli"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
 # Docker Credential Helper for Amazon ECR
 brew "docker-credential-helper-ecr", link: false
 # Tool for managing dock items
@@ -26,6 +27,12 @@ brew "git-crypt"
 brew "git-extras"
 # Git extension for versioning large files
 brew "git-lfs"
+# Library to load and enumerate PKCS#11 modules
+brew "p11-kit"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
@@ -34,6 +41,8 @@ brew "go"
 brew "netpbm"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
+# GNU Ubiquitous Intelligent Language for Extensions
+brew "guile"
 # Kubernetes package manager
 brew "helm"
 # Tools and libraries to manipulate images in many formats
@@ -54,6 +63,8 @@ brew "minikube"
 brew "n"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Ruby version manager
@@ -70,14 +81,10 @@ brew "yq"
 brew "zsh"
 # The best way of working with Protocol Buffers.
 brew "bufbuild/buf/buf"
-# Lacework command-line interface helps to manage the Lacework platform
-brew "lacework/tap/lacework-cli"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # API documentation browser and code snippet manager
 cask "dash"
-# App to build and share containerized applications and microservices
-cask "docker"
 # Web browser
 cask "google-chrome"
 # Desktop automation application
@@ -92,12 +99,21 @@ cask "postman"
 cask "spotify"
 # Open-source code editor
 cask "visual-studio-code"
+mas "DaisyDisk", id: 411643860
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Jira", id: 1475897096
+mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Slack", id: 803453959
 mas "Xcode", id: 497799835
 vscode "aaron-bond.better-comments"
 vscode "amazonwebservices.aws-toolkit-vscode"
 vscode "bufbuild.vscode-buf"
 vscode "castwide.solargraph"
+vscode "christian-kohler.npm-intellisense"
 vscode "dbaeumer.vscode-eslint"
 vscode "deerawan.vscode-dash"
 vscode "dnicolson.binary-plist"
@@ -107,6 +123,7 @@ vscode "firsttris.vscode-jest-runner"
 vscode "folke.vscode-monorepo-workspace"
 vscode "github.copilot"
 vscode "github.copilot-chat"
+vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
 vscode "golang.go"
 vscode "hbenl.vscode-mocha-test-adapter"
@@ -119,6 +136,7 @@ vscode "mgmcdermott.vscode-language-babel"
 vscode "mikestead.dotenv"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
+vscode "ms-python.autopep8"
 vscode "ms-python.debugpy"
 vscode "ms-python.isort"
 vscode "ms-python.python"
