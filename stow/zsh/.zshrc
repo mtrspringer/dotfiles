@@ -132,3 +132,6 @@ unset __conda_setup
 # >>> rbenv initialize >>>
 eval "$(rbenv init - zsh)"
 # <<< rbenv initialize <<<
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform

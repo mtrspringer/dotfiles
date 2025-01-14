@@ -2,6 +2,7 @@ tap "aws/tap"
 tap "bufbuild/buf"
 tap "buo/cask-upgrade"
 tap "github/gh"
+tap "hashicorp/tap"
 tap "homebrew/bundle"
 # Run your GitHub Actions locally
 brew "act"
@@ -81,12 +82,16 @@ brew "yq"
 brew "zsh"
 # The best way of working with Protocol Buffers.
 brew "bufbuild/buf/buf"
+# Terraform
+brew "hashicorp/tap/terraform"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # API documentation browser and code snippet manager
 cask "dash"
 # Web browser
 cask "google-chrome"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "google-cloud-sdk"
 # Desktop automation application
 cask "hammerspoon"
 # Meet, chat, call, and collaborate in just one place
