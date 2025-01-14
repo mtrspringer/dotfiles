@@ -45,6 +45,7 @@
 	all = "!f() { find ~/Code -name '.git' -type d | sed s,/.git,,; }; f"
 	all-click = "!f() { find ~/Code/click -name '.git' -type d | sed s,/.git,,; }; f"
 	clone-click = "!f() { curr_dir=$(pwd); cd ~/Code/click; git clone git@github.com:mtrspringer/$1.git; cd $1; git remote add root git@github.com:clicktherapeutics/$1.git; cd $curr_dir; }; f"
+	clone-indie = "!f() { curr_dir=$(pwd); cd ~/Code/indie-health; git clone git@github.com:indie-health/$1.git; cd $curr_dir; }; f"
 	clone-fork = "!f() { curr_dir=$(pwd); cd ~/Code/forks; git clone git@github.com:mtrspringer/$1.git; cd $curr_dir; }; f"
 	clone-personal = "!f() { curr_dir=$(pwd); cd ~/Code/personal; git clone git@github.com:mtrspringer/$1.git; cd $curr_dir; }; f"
 	exec-all = "!f() { find ~/Code -name '.git' -type d | sed s,/.git,, | xargs -P10 -I{} git -C {} $1; }; f"

@@ -75,6 +75,7 @@ plugins=(
   aws
   brew-bundle
   click-tx
+  indie-health
   docker-compose
   git
   git-extras

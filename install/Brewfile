@@ -1,6 +1,7 @@
 tap "aws/tap"
 tap "bufbuild/buf"
 tap "buo/cask-upgrade"
+tap "daveshanley/vacuum"
 tap "github/gh"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
@@ -12,8 +13,6 @@ brew "argocd"
 brew "awscli"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
 # Docker Credential Helper for Amazon ECR
 brew "docker-credential-helper-ecr", link: false
 # Tool for managing dock items
@@ -38,6 +37,8 @@ brew "gnutls"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Fast linters runner for Go
+brew "golangci-lint"
 # Image manipulation
 brew "netpbm"
 # Graph visualization software from AT&T and Bell Labs
@@ -70,10 +71,16 @@ brew "protobuf"
 brew "ruby-build"
 # Ruby version manager
 brew "rbenv"
+# Generate type safe Go from SQL
+brew "sqlc"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Command-line interface for running and interacting with Temporal Server and UI
+brew "temporal"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Internet file retriever
 brew "wget"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
@@ -82,12 +89,16 @@ brew "yq"
 brew "zsh"
 # The best way of working with Protocol Buffers.
 brew "bufbuild/buf/buf"
+# The worlds fastest and most scalable OpenAPI linter
+brew "daveshanley/vacuum/vacuum"
 # Terraform
 brew "hashicorp/tap/terraform"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # API documentation browser and code snippet manager
 cask "dash"
+# App to build and share containerised applications and microservices
+cask "docker"
 # Web browser
 cask "google-chrome"
 # Set of tools to manage resources and applications hosted on Google Cloud
