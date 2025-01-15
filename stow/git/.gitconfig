@@ -26,6 +26,9 @@
 	rebase = true
 	ff = only
 
+[push]
+	autoSetupRemote = true
+
 [alias]
 	# shorthand aliases
 	amend = commit --amend --reuse-message=HEAD
