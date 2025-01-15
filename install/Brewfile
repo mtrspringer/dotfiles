@@ -19,6 +19,8 @@ brew "docker-credential-helper-ecr", link: false
 brew "dockutil"
 # GitHub command-line tool
 brew "gh"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@76"
 # Distributed revision control system
 brew "git"
 # Enable transparent encryption/decryption of files in a git repo
@@ -35,6 +37,8 @@ brew "go"
 brew "netpbm"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Kubernetes package manager
 brew "helm"
 # Tools and libraries to manipulate images in many formats
