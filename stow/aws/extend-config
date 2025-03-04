@@ -1,0 +1,195 @@
+# Base Profiles
+
+[cloud-admin]
+aws_account_id = 418480071957
+aws_account_alias = clicktherapeutics-dev
+role_name = cloud-admin-roles
+target_role_name = CtUserRoleForCloudAdministrator
+target_region = us-east-1
+
+[tech-eng]
+aws_account_id = 418480071957
+aws_account_alias = clicktherapeutics-dev
+role_name = tech-eng-roles
+target_role_name = CtUserRoleForEngineer
+target_region = us-east-1
+
+# Organization Management
+
+[org-mgmt]
+aws_account_id =  418480071957
+source_profile = cloud-admin
+
+# CT101
+
+[ct101-us-np]
+aws_account_id =  418480071957
+source_profile = cloud-admin
+
+[ct101-us-pd]
+aws_account_id =  129815654493
+source_profile = cloud-admin
+
+# CT132
+
+[ct132-us-np]
+aws_account_id =  951198553769
+source_profile = cloud-admin
+
+[ct132-us-pd]
+aws_account_id =  578016661935
+source_profile = cloud-admin
+
+# CT152 (US Rejoyn)
+
+[ct152_ots-us-dv-1]
+aws_account_id =  358341525847
+source_profile = cloud-admin
+
+[ct152_ots-us-qa-1]
+aws_account_id =  164205651402
+source_profile = cloud-admin
+
+[ct152_ots-us-pd-1]
+aws_account_id =  104203934007
+source_profile = cloud-admin
+
+# CT152 (UK Pilot)
+
+[ct152_ots-eu-dv-1]
+region = eu-west-1
+aws_account_id =  492061388231
+source_profile = cloud-admin
+
+[ct152_ots-eu-qa-1]
+region = eu-west-1
+aws_account_id =  365201247840
+source_profile = cloud-admin
+
+[ct152_ots-eu-pd-1]
+region = eu-west-1
+aws_account_id =  442157870190
+source_profile = cloud-admin
+
+# CT152 (UK Rejoyn)
+
+[ct152_ots-eu-dv-2]
+region = eu-west-1
+aws_account_id =  339712712187
+source_profile = cloud-admin
+
+[ct152_ots-eu-qa-2]
+region = eu-west-1
+aws_account_id =  891377034589
+source_profile = cloud-admin
+
+[ct152_ots-eu-pd-2]
+region = eu-west-1
+aws_account_id =  211125469503
+source_profile = cloud-admin
+
+# CT155
+
+[ct155-us-np]
+aws_account_id =  616418525936
+source_profile = cloud-admin
+
+[ct155-us-pd]
+aws_account_id =  343335910610
+source_profile = cloud-admin
+
+# CT156
+
+[ct156-us-np]
+aws_account_id =  128526778684
+source_profile = cloud-admin
+
+[ct156-us-pd]
+aws_account_id =  799581844764
+source_profile = cloud-admin
+
+# Sandbox
+
+[sandbox-us-np]
+aws_account_id =  249738588392
+source_profile = cloud-admin
+color = ffd700 # yellow
+
+# Security
+
+[security-us-pd]
+aws_account_id =  823842485831
+source_profile = cloud-admin
+color = 00008b # darkblue
+
+# CI/CD
+
+[cicd-us-np]
+aws_account_id =  561618220790
+source_profile = cloud-admin
+color = 228b22 # forestgreen
+
+[cicd-us-np-eng]
+aws_account_id =  561618220790
+source_profile = tech-eng
+color = 228b22 # forestgreen
+
+[cicd-us-pd]
+aws_account_id =  721933338009
+source_profile = cloud-admin
+color = 228b22 # forestgreen
+
+# Shared Infrastructure
+
+[infra-us-np]
+aws_account_id =  652244757242
+source_profile = cloud-admin
+color = ff8c00 # darkorange
+
+[infra-us-pd]
+aws_account_id =  054045095302
+source_profile = cloud-admin
+color = ff8c00 # darkorange
+
+# Prototypes
+
+[prototypes-us-np]
+aws_account_id =  062790668828
+source_profile = cloud-admin
+color = 9370db # mediumpurple
+
+[prototypes-us-pd]
+aws_account_id =  785553665724
+source_profile = cloud-admin
+color = 9370db # mediumpurple
+
+# IT
+
+[it-us-np]
+aws_account_id =  728185038247
+source_profile = cloud-admin
+color = d3d3d3 # lightgray
+
+[it-us-pd]
+aws_account_id =  979137131111
+source_profile = cloud-admin
+color = d3d3d3 # lightgray
+
+# Data
+
+[dataeng-us-np]
+aws_account_id =  525754759834
+source_profile = cloud-admin
+color = 4169e1 # royalblue
+
+[dataeng-us-pd]
+aws_account_id =  466546016138
+source_profile = cloud-admin
+color = 4169e1 # royalblue
+
+# Science
+
+[sci-us-pd]
+aws_account_id =  093235327106
+source_profile = cloud-admin
+color = 006400 # darkgreen
