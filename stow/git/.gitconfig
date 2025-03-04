@@ -6,6 +6,9 @@
 [github]
 	user = mtrspringer
 
+[includeIf "gitdir:~/Code/click/"]
+    path = ~/Code/click/.gitconfig
+
 [core]
 	abbrev = 7
 	excludesfile = ~/.gitignore
@@ -40,20 +43,24 @@
 	lg = log -p
 	ll = log --pretty=oneline --graph --abbrev-commit
 	lm = log --pretty=format:'* %s (%h)'
-	lt = log --all --graph --decorate --oneline
+	lt = log --graph --decorate --oneline --exclude=refs/*/site --all 
+	lta = log --graph --decorate --oneline --all 
 	p = push
 	pf = push --force
 	st = status
+  bd = branch-default
 	# custom alias functions
 	all = "!f() { find ~/Code -name '.git' -type d | sed s,/.git,,; }; f"
 	all-click = "!f() { find ~/Code/click -name '.git' -type d | sed s,/.git,,; }; f"
-	clone-click = "!f() { curr_dir=$(pwd); cd ~/Code/click; git clone git@github.com:mtrspringer/$1.git; cd $1; git remote add root git@github.com:clicktherapeutics/$1.git; cd $curr_dir; }; f"
+	clone-click = "!f() { curr_dir=$(pwd); cd ~/Code/click; git clone https://github.com/clicktherapeutics/$1.git; cd $1; cd $curr_dir; }; f"
+  rename-remote-click = "!f() { repo_name=$(basename `git rev-parse --show-toplevel`); git remote remove root; git remote set-url origin https://github.com/clicktherapeutics/$repo_name.git; }; f"
 	clone-fork = "!f() { curr_dir=$(pwd); cd ~/Code/forks; git clone git@github.com:mtrspringer/$1.git; cd $curr_dir; }; f"
 	clone-personal = "!f() { curr_dir=$(pwd); cd ~/Code/personal; git clone git@github.com:mtrspringer/$1.git; cd $curr_dir; }; f"
 	exec-all = "!f() { find ~/Code -name '.git' -type d | sed s,/.git,, | xargs -P10 -I{} git -C {} $1; }; f"
 	exec-all-click = "!f() { find ~/Code/click -name '.git' -type d | sed s,/.git,, | xargs -P10 -I{} git -C {} $1; }; f"
-	prrm = "!f() { local master_branch=${1:-master}; git pull --rebase root $master_branch; }; f"
+	prr = "!f() { local default_branch=$(git bd); git pull --rebase origin $default_branch; }; f"
 	rel-click = "!f() { local release_branch=rel-$1; local remote_name=${2:-root}; git checkout -b $release_branch && git push $remote_name $release_branch; }; f"
-	synk = "!f() { local master_branch=${1:-master}; local current_branch=$(git branch --show-current); git checkout $master_branch && git pull root $master_branch && git push origin $master_branch --no-verify && git fetch root --tags && git checkout $current_branch; }; f"
-	ff = "!f() { local master_branch=${1:-master}; git synk $master_branch && git prrm $master_branch; }; f"
+	synk = "!f() { local default_branch=$(git bd); local current_branch=$(git branch --show-current); git checkout $default_branch && git pull && git fetch origin --tags && git checkout $current_branch; }; f"
+	ff = "!f() { local default_branch=$(git bd); git synk $default_branch && git prr $default_branch; }; f"
 	undo = "!f() { git reset --soft HEAD~${1:-1}; }; f"
+  branch-default = "!f() { branch_name=$(git symbolic-ref --short refs/remotes/origin/HEAD); basename $branch_name; }; f"

@@ -45,6 +45,7 @@ stow-link: stow-$(OS)
 	stow --dotfiles -t $(HOME) zsh
 	stow --dotfiles -t $(HOME)/.aws aws
 	stow --dotfiles -t $(HOME) git
+	stow --dotfiles -t $(HOME)/Code/click git-click
 	stow --dotfiles -t $(HOME)/.gnupg gpg
 	stow --dotfiles -t $(HOME)/.hammerspoon hammerspoon
 	stow --dotfiles -t $(HOME)/.kube kube
@@ -54,6 +55,7 @@ stow-unlink: stow-$(OS)
 	stow --delete --dotfiles -t $(HOME) zsh
 	stow --delete --dotfiles -t $(HOME)/.aws aws
 	stow --delete --dotfiles -t $(HOME) git
+	stow --delete --dotfiles -t $(HOME)/Code/click git-click
 	stow --delete --dotfiles -t $(HOME)/.gnupg gpg
 	stow --delete --dotfiles -t $(HOME)/.hammerspoon hammerspoon
 	stow --delete --dotfiles -t $(HOME)/.kube kube

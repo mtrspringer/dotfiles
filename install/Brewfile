@@ -37,8 +37,6 @@ brew "go"
 brew "netpbm"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
 # Kubernetes package manager
 brew "helm"
 # Tools and libraries to manipulate images in many formats
@@ -59,6 +57,8 @@ brew "minikube"
 brew "n"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Ruby version manager
@@ -101,6 +101,7 @@ cask "spotify"
 cask "visual-studio-code"
 mas "Magnet", id: 441258766
 mas "Xcode", id: 497799835
+vscode "42crunch.vscode-openapi"
 vscode "aaron-bond.better-comments"
 vscode "amazonwebservices.aws-toolkit-vscode"
 vscode "bufbuild.vscode-buf"
@@ -123,6 +124,7 @@ vscode "jebbs.plantuml"
 vscode "jingkaizhao.vscode-redux-devtools"
 vscode "kddejong.vscode-cfn-lint"
 vscode "mark-tucker.aws-cli-configure"
+vscode "me-dutour-mathieu.vscode-github-actions"
 vscode "mgmcdermott.vscode-language-babel"
 vscode "mikestead.dotenv"
 vscode "ms-azuretools.vscode-docker"
@@ -142,6 +144,7 @@ vscode "ms-vscode.remote-explorer"
 vscode "ms-vscode.test-adapter-converter"
 vscode "ms-vsliveshare.vsliveshare"
 vscode "msjsdiag.vscode-react-native"
+vscode "ninoseki.vscode-mogami"
 vscode "njpwerner.autodocstring"
 vscode "numso.prettier-standard-vscode"
 vscode "orta.vscode-jest"
