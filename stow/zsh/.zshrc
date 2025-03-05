@@ -73,6 +73,7 @@ ZSH_CUSTOM=$DOTFILES_HOME/oh-my-zsh
 plugins=(
   1password
   aws
+  mtrs
   brew-bundle
   click-tx
   docker-compose
