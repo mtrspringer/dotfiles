@@ -42,6 +42,7 @@ packages: brew-packages cask-apps node-packages rust-packages
 stow-link: stow-$(OS)
 	for FILE in $$(\ls -A $(STOW_DIR)/zsh); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
+	stow --dotfiles -t $(HOME) bash
 	stow --dotfiles -t $(HOME) zsh
 	stow --dotfiles -t $(HOME)/.aws aws
 	stow --dotfiles -t $(HOME) git
@@ -52,6 +53,7 @@ stow-link: stow-$(OS)
 
 # TODO: figure out how to support docker config: stow --delete --dotfiles -t $(HOME)/.docker docker
 stow-unlink: stow-$(OS)
+	stow --delete --dotfiles -t $(HOME) bash
 	stow --delete --dotfiles -t $(HOME) zsh
 	stow --delete --dotfiles -t $(HOME)/.aws aws
 	stow --delete --dotfiles -t $(HOME) git

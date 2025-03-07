@@ -117,3 +117,13 @@ export SHOW_AWS_PROMPT=false
 # >>> rbenv initialize >>>
 eval "$(rbenv init - zsh)"
 # <<< rbenv initialize <<<
+
+# >>> pyenv initialize >>>
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+# <<< pyenv initialize <<<
+
+# >>> pyenv-virtualenv initialize >>>
+eval "$(pyenv virtualenv-init -)"
+# <<< pyenv-virtualenv initialize <<<
