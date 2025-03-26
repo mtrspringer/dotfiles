@@ -5,6 +5,7 @@ tap "daveshanley/vacuum"
 tap "github/gh"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
+tap "pb33f/taps"
 # Run your GitHub Actions locally
 brew "act"
 # GitOps Continuous Delivery for Kubernetes
@@ -17,6 +18,8 @@ brew "coreutils"
 brew "docker-credential-helper-ecr", link: false
 # Tool for managing dock items
 brew "dockutil"
+# Database version control to control migrations
+brew "flyway"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -93,6 +96,8 @@ brew "bufbuild/buf/buf"
 brew "daveshanley/vacuum/vacuum"
 # Terraform
 brew "hashicorp/tap/terraform"
+# The worlds sexiest OpenAPI diffing and change detection engine
+brew "pb33f/taps/openapi-changes"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # API documentation browser and code snippet manager
@@ -159,6 +164,8 @@ vscode "ms-python.isort"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
 vscode "ms-toolsai.jupyter"
+vscode "ms-toolsai.jupyter-keymap"
+vscode "ms-toolsai.jupyter-renderers"
 vscode "ms-toolsai.vscode-jupyter-cell-tags"
 vscode "ms-toolsai.vscode-jupyter-slideshow"
 vscode "ms-vscode-remote.remote-containers"
