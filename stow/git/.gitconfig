@@ -60,6 +60,7 @@
 	exec-all-click = "!f() { find ~/Code/click -name '.git' -type d | sed s,/.git,, | xargs -P10 -I{} git -C {} $1; }; f"
 	prr = "!f() { local default_branch=$(git bd); git pull --rebase origin $default_branch; }; f"
 	rel-click = "!f() { local release_branch=rel-$1; local remote_name=${2:-root}; git checkout -b $release_branch && git push $remote_name $release_branch; }; f"
+  cobd = "!f() { git checkout $(git branch-default); }; f"
 	synk = "!f() { local default_branch=$(git bd); local current_branch=$(git branch --show-current); git checkout $default_branch && git pull && git fetch origin --tags && git checkout $current_branch; }; f"
 	ff = "!f() { local default_branch=$(git bd); git synk $default_branch && git prr $default_branch; }; f"
 	undo = "!f() { git reset --soft HEAD~${1:-1}; }; f"
