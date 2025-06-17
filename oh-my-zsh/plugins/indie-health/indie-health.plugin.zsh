@@ -7,3 +7,7 @@ export INDIE_HEALTH_REPOS_DIR=~/Code/indie-health
 ## VS Code
 
 code-indie() { code $INDIE_HEALTH_REPOS_DIR/$1 }
+
+## Cursor
+
+cursor-indie() { cursor $INDIE_HEALTH_REPOS_DIR/$1 }

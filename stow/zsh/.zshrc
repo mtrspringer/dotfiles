@@ -135,7 +135,13 @@ unset __conda_setup
 eval "$(rbenv init - zsh)"
 # <<< rbenv initialize <<<
 
+# >>> goenv initialize >>>
 export PATH=$PATH:$(go env GOPATH)/bin
+# <<< goenv initialize <<<
+
+# >>> libpq initialize >>>
+export PATH="$PATH:/usr/local/opt/libpq/bin"
+# <<< libpq initialize <<<
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform

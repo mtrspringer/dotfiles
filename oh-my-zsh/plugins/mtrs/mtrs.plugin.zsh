@@ -53,3 +53,5 @@ function dkr-rehost() {
 }
 
 ## VS Code
+
+## Cursor

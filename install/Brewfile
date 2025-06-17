@@ -58,6 +58,8 @@ brew "jq"
 brew "kubernetes-cli", link: false
 # Template-free customization of Kubernetes YAML manifests
 brew "kustomize"
+# Postgres C API library
+brew "libpq"
 # Keep your Mac's application settings in sync
 brew "mackup"
 # Mac App Store command-line interface
@@ -100,6 +102,8 @@ brew "hashicorp/tap/terraform"
 brew "pb33f/taps/openapi-changes"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Write, edit, and chat about your code with AI
+cask "cursor"
 # API documentation browser and code snippet manager
 cask "dash"
 # App to build and share containerised applications and microservices
@@ -133,12 +137,15 @@ mas "Xcode", id: 497799835
 vscode "42crunch.vscode-openapi"
 vscode "aaron-bond.better-comments"
 vscode "amazonwebservices.aws-toolkit-vscode"
+vscode "bierner.markdown-mermaid"
+vscode "bpruitt-goddard.mermaid-markdown-syntax-highlighting"
 vscode "bufbuild.vscode-buf"
 vscode "castwide.solargraph"
 vscode "christian-kohler.npm-intellisense"
 vscode "dbaeumer.vscode-eslint"
 vscode "deerawan.vscode-dash"
 vscode "dnicolson.binary-plist"
+vscode "docker.docker"
 vscode "eamodio.gitlens"
 vscode "firsttris.vscode-jest-runner"
 vscode "folke.vscode-monorepo-workspace"
@@ -156,6 +163,7 @@ vscode "mark-tucker.aws-cli-configure"
 vscode "me-dutour-mathieu.vscode-github-actions"
 vscode "mgmcdermott.vscode-language-babel"
 vscode "mikestead.dotenv"
+vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
 vscode "ms-python.autopep8"
