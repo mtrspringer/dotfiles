@@ -43,20 +43,20 @@ stow-link: stow-$(OS)
 	for FILE in $$(\ls -A $(STOW_DIR)/zsh); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
 		mv -v $(HOME)/$$FILE{,.bak}; fi; done
 	stow --dotfiles -t $(HOME) zsh
-	stow --dotfiles -t $(HOME)/.aws aws
+	# stow --dotfiles -t $(HOME)/.aws aws
 	stow --dotfiles -t $(HOME) git
 	stow --dotfiles -t $(HOME)/.gnupg gpg
 	stow --dotfiles -t $(HOME)/.hammerspoon hammerspoon
-	stow --dotfiles -t $(HOME)/.kube kube
+	# stow --dotfiles -t $(HOME)/.kube kube
 
 # TODO: figure out how to support docker config: stow --delete --dotfiles -t $(HOME)/.docker docker
 stow-unlink: stow-$(OS)
 	stow --delete --dotfiles -t $(HOME) zsh
-	stow --delete --dotfiles -t $(HOME)/.aws aws
+	# stow --delete --dotfiles -t $(HOME)/.aws aws
 	stow --delete --dotfiles -t $(HOME) git
 	stow --delete --dotfiles -t $(HOME)/.gnupg gpg
 	stow --delete --dotfiles -t $(HOME)/.hammerspoon hammerspoon
-	stow --delete --dotfiles -t $(HOME)/.kube kube
+	# stow --delete --dotfiles -t $(HOME)/.kube kube
 	for FILE in $$(\ls -A $(STOW_DIR)/zsh); do if [ -f $(HOME)/$$FILE.bak ]; then \
 		mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
