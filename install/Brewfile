@@ -4,7 +4,6 @@ tap "buo/cask-upgrade"
 tap "daveshanley/vacuum"
 tap "github/gh"
 tap "hashicorp/tap"
-tap "homebrew/bundle"
 tap "pb33f/taps"
 # Run your GitHub Actions locally
 brew "act"
@@ -12,10 +11,14 @@ brew "act"
 brew "argocd"
 # Official Amazon AWS command-line interface
 brew "awscli"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Programmable completion for Bash 4.2+
+brew "bash-completion@2"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Docker Credential Helper for Amazon ECR
-brew "docker-credential-helper-ecr", link: false
+brew "docker-credential-helper-ecr"
 # Tool for managing dock items
 brew "dockutil"
 # Database version control to control migrations
@@ -68,6 +71,8 @@ brew "mas"
 brew "minikube"
 # Node version management
 brew "n"
+# Perl compatible regular expressions library
+brew "pcre"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Protocol buffers (Google's data interchange format)
@@ -76,6 +81,10 @@ brew "protobuf"
 brew "ruby-build"
 # Ruby version manager
 brew "rbenv"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
+# Safe, concurrent, practical language
+brew "rust"
 # Generate type safe Go from SQL
 brew "sqlc"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -107,13 +116,15 @@ cask "cursor"
 # API documentation browser and code snippet manager
 cask "dash"
 # App to build and share containerised applications and microservices
-cask "docker"
+cask "docker-desktop"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
 # Web browser
 cask "google-chrome"
-# Set of tools to manage resources and applications hosted on Google Cloud
-cask "google-cloud-sdk"
 # Desktop automation application
 cask "hammerspoon"
+# Provides updates to various Microsoft products
+cask "microsoft-auto-update"
 # Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
 # VPN client for secure internet access and private browsing
@@ -124,10 +135,8 @@ cask "postman"
 cask "spotify"
 # Open-source code editor
 cask "visual-studio-code"
-mas "DaisyDisk", id: 411643860
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
-mas "Jira", id: 1475897096
 mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825

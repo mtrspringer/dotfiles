@@ -1,6 +1,7 @@
 # Exports
 
 # add brew executable directory to PATH
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="/usr/local/sbin:$PATH"
 # TODO: make this configurable
 export HOMEBREW_BUNDLE_FILE=${DOTFILES_HOME}/install/Brewfile
