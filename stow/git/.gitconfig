@@ -1,7 +1,7 @@
 [user]
 	name = mtrspringer
 	email = mtrspringer@users.noreply.github.com
-	signingkey = C03701B5ED2AAA49
+	signingkey = 482064B0A87A471B
 
 [github]
 	user = mtrspringer
@@ -18,6 +18,9 @@
 
 [commit]
 	gpgsign = true
+
+[gpg]
+	program = /opt/homebrew/bin/gpg
 
 [diff]
 	algorithm = histogram
@@ -50,7 +53,7 @@
 	all = "!f() { find ~/Code -name '.git' -type d | sed s,/.git,,; }; f"
 	all-click = "!f() { find ~/Code/click -name '.git' -type d | sed s,/.git,,; }; f"
 	clone-click = "!f() { curr_dir=$(pwd); cd ~/Code/click; git clone https://github.com/clicktherapeutics/$1.git; cd $1; cd $curr_dir; }; f"
-	clone-indie = "!f() { curr_dir=$(pwd); cd ~/Code/indie-health; git clone git@github.com:indie-health/$1.git;cd $curr_dir; }; f"
+	clone-indie = "!f() { curr_dir=$(pwd); cd ~/Code/indie-health; git clone https://github.com/indie-health/$1.git; cd $curr_dir; }; f"
   rename-remote-click = "!f() { repo_name=$(basename `git rev-parse --show-toplevel`); git remote remove root; git remote set-url origin https://github.com/clicktherapeutics/$repo_name.git; }; f"
 	clone-fork = "!f() { curr_dir=$(pwd); cd ~/Code/forks; git clone git@github.com:mtrspringer/$1.git; cd $curr_dir; }; f"
 	clone-personal = "!f() { curr_dir=$(pwd); cd ~/Code/personal; git clone git@github.com:mtrspringer/$1.git; cd $curr_dir; }; f"
