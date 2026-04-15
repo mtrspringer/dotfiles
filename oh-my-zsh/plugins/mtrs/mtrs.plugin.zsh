@@ -31,12 +31,19 @@ alias pod-images="kubectl get pods --all-namespaces -o jsonpath="{..image}" | tr
 
 ## Utilities
 
-alias my-ip="echo $(curl --silent ifconfig.me)"
+alias my-ip="curl -fsSL ifconfig.me && echo"
 
 ## NPM
 
 alias npm-links='npm ls -g --depth=0 --link=true'
 alias npm-rm-nm='find . -name "node_modules" -exec rm -rf "{}" +'
+
+## Terraform
+
+alias tf='terraform'
+alias tfi='terraform init'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
 
 # Functions
 

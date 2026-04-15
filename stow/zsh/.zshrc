@@ -129,4 +129,12 @@ export PATH="$PATH:/usr/local/opt/libpq/bin"
 # <<< libpq initialize <<<
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
+complete -o nospace -C $(which terraform) terraform
+
+if command -v ngrok &>/dev/null; then
+  eval "$(ngrok completion)"
+fi
+
+if command -v twilio &>/dev/null; then
+  eval $(twilio autocomplete:script zsh)
+fi
