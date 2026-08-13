@@ -21,6 +21,24 @@ alias dkr-rm-all='dkr rm $(dkr ps -aq)'
 alias dkr-rmi-all='dkr rmi $(dkr images -aq)'
 alias dkrc='docker compose'
 
+## GitHub Stacked PRs (ghs*)
+
+alias ghsa='gh stack add'
+alias ghsco='gh stack checkout'
+alias ghsi='gh stack init'
+alias ghsp='gh stack push'
+alias ghsr='gh stack rebase'
+alias ghsra='gh stack rebase --abort'
+alias ghsrc='gh stack rebase --continue'
+alias ghsru='gh stack rebase --upstack'
+alias ghss='gh stack submit'
+alias ghsv='gh stack view'
+# navigation aliases
+alias ghsnu='gh stack up'
+alias ghsnd='gh stack down'
+alias ghsnt='gh stack top'
+alias ghsnd='gh stack bottom'
+
 ## Kubernetes
 
 alias kctl="kubectl"
